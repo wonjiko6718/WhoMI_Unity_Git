@@ -5,8 +5,10 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     private int Hp;
-    private float playerSpeed = 5.0f;
-    private bool isJumpNow = false;
+    private float playerSpeed = 7.0f;
+    private float jumpSpeed= 2.5f;
+    private bool isGround = false;
+
     private Vector2 playerMovement;
     private Rigidbody2D playerRigidbody;
     private Transform playerTransform;
@@ -21,6 +23,8 @@ public class playerController : MonoBehaviour
     void Update()
     {
         playerMovement.x = Input.GetAxisRaw("Horizontal");
+        Debug.Log("iG"+isGround);
+        
     }
     void FixedUpdate()
     {
@@ -43,8 +47,33 @@ public class playerController : MonoBehaviour
         }
         playerTransform.position += moveVelocity * playerSpeed * Time.deltaTime;
     }
-    void Jump()
+    void Jump() // Collider Vector + method fix please
     {
+        Vector2 jumpVelocity = new Vector2(0,jumpSpeed);
 
+        if((isGround == true && Input.GetButton("Jump")))
+        {
+            playerRigidbody.AddForce(jumpVelocity,ForceMode2D.Impulse);
+            isGround = false;
+        }
+    }
+    // collider Trigger method
+    void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Ground")
+        {
+            isGround = true;
+        }
+    }
+    void OnCollisionStay2D(Collision2D other) {
+        if(other.gameObject.tag == "Ground")
+        {
+            isGround = true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.tag == "Ground")
+        {
+            isGround = false;
+        }
     }
 }
