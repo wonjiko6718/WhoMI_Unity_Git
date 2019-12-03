@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour
 {
     private int Hp;
     private float playerSpeed = 7.0f;
-    private float jumpSpeed= 2.5f;
+    private float jumpSpeed= 7.0f;
     private bool isGround = false;
 
     private Vector2 playerMovement;
@@ -51,7 +51,7 @@ public class playerController : MonoBehaviour
     {
         Vector2 jumpVelocity = new Vector2(0,jumpSpeed);
 
-        if((isGround == true && Input.GetButton("Jump")))
+        if((isGround == true && Input.GetButton("Jump")) && playerRigidbody.velocity.y == 0)
         {
             playerRigidbody.AddForce(jumpVelocity,ForceMode2D.Impulse);
             isGround = false;
@@ -67,7 +67,7 @@ public class playerController : MonoBehaviour
     void OnCollisionStay2D(Collision2D other) {
         if(other.gameObject.tag == "Ground")
         {
-            isGround = true;
+            return;
         }
     }
     void OnCollisionExit2D(Collision2D other) {
