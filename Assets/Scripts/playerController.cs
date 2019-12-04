@@ -23,7 +23,6 @@ public class playerController : MonoBehaviour
     void Update()
     {
         playerMovement.x = Input.GetAxisRaw("Horizontal");
-        Debug.Log("iG"+isGround);
         
     }
     void FixedUpdate()
