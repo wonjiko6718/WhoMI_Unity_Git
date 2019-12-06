@@ -9,8 +9,8 @@ public class playerController : MonoBehaviour
     private float jumpSpeed= 7.0f;
     private bool isGround = false;
 
-    public GameObject bullet;
-    private Vector2 playerDir;
+    public GameObject bulletPrefab;
+    public Vector3 playerDir;
     private Vector2 playerMovement;
     private Rigidbody2D playerRigidbody;
     private Transform playerTransform;
@@ -41,13 +41,13 @@ public class playerController : MonoBehaviour
         {
             playerTransform.localScale = new Vector3(1,1,1);
             moveVelocity = Vector2.right;
-            playerDir = Vector2.right;
+            playerDir = new Vector3(1,0,0);
         }
         if(Input.GetAxisRaw("Horizontal") < 0) // PlayerMove Left
         {
             playerTransform.localScale = new Vector3(-1,1,1);
             moveVelocity = Vector2.left;
-            playerDir = Vector2.left;
+            playerDir = new Vector3(-1,0,0);
         }
         playerTransform.position += moveVelocity * playerSpeed * Time.deltaTime;
     }
@@ -65,8 +65,7 @@ public class playerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            Instantiate(bullet,transform.position + new Vector3 (2,0,0), Quaternion.identity);
-            Destroy(bullet.gameObject, 2.0f);
+            GameObject bullet = Instantiate(bulletPrefab,transform.position + playerDir, Quaternion.identity);
         }
     }
     // collider Trigger method

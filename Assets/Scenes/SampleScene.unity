@@ -496,7 +496,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -928,7 +928,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480c423036a767d458d0827295888ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 307523805526900, guid: 2a45429a6d67421448da898b355d3207, type: 3}
+  bulletPrefab: {fileID: 307523805526900, guid: 2a45429a6d67421448da898b355d3207,
+    type: 3}
+  playerDir: {x: 0, y: 0}
 --- !u!1 &1955325060
 GameObject:
   m_ObjectHideFlags: 0

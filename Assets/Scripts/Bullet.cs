@@ -8,17 +8,27 @@ public class Bullet : MonoBehaviour
 
     private Collider attackCol;
     private Transform attackTrans;
+    private Rigidbody2D bulletRigidbody;
     // Start is called before the first frame update
     void Start()
     {
         attackTrans = GetComponent<Transform>();
         attackCol = GetComponent<Collider>();
-        GetComponent<Rigidbody2D>().AddForce(new Vector2 (0,0) * attackSpeed , ForceMode2D.Impulse);
+        bulletRigidbody = GetComponent<Rigidbody2D>();
+
+
+        Destroy(gameObject,3.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
     }
 }
