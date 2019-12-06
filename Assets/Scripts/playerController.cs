@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour
     private float jumpSpeed= 7.0f;
     private bool isGround = false;
 
+    public GameObject bullet;
+    private Vector2 playerDir;
     private Vector2 playerMovement;
     private Rigidbody2D playerRigidbody;
     private Transform playerTransform;
@@ -23,6 +25,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         playerMovement.x = Input.GetAxisRaw("Horizontal");
+        Attack();
         
     }
     void FixedUpdate()
@@ -38,11 +41,13 @@ public class playerController : MonoBehaviour
         {
             playerTransform.localScale = new Vector3(1,1,1);
             moveVelocity = Vector2.right;
+            playerDir = Vector2.right;
         }
         if(Input.GetAxisRaw("Horizontal") < 0) // PlayerMove Left
         {
             playerTransform.localScale = new Vector3(-1,1,1);
             moveVelocity = Vector2.left;
+            playerDir = Vector2.left;
         }
         playerTransform.position += moveVelocity * playerSpeed * Time.deltaTime;
     }
@@ -54,6 +59,14 @@ public class playerController : MonoBehaviour
         {
             playerRigidbody.AddForce(jumpVelocity,ForceMode2D.Impulse);
             isGround = false;
+        }
+    }
+    void Attack()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            Instantiate(bullet,transform.position + new Vector3 (2,0,0), Quaternion.identity);
+            Destroy(bullet.gameObject, 2.0f);
         }
     }
     // collider Trigger method
