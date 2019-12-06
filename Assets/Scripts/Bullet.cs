@@ -6,17 +6,15 @@ public class Bullet : MonoBehaviour
 {
     private float attackSpeed = 10.0f;
 
-    private Collider attackCol;
-    private Transform attackTrans;
+    private GameObject playerTrans;
     private Rigidbody2D bulletRigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        attackTrans = GetComponent<Transform>();
-        attackCol = GetComponent<Collider>();
         bulletRigidbody = GetComponent<Rigidbody2D>();
 
-
+        playerTrans = GameObject.Find("Player");
+        bulletRigidbody.velocity = new Vector2(-(playerTrans.transform.position.x - transform.position.x)* attackSpeed,0);
         Destroy(gameObject,3.0f);
     }
 

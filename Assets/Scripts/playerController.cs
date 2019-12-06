@@ -41,13 +41,13 @@ public class playerController : MonoBehaviour
         {
             playerTransform.localScale = new Vector3(1,1,1);
             moveVelocity = Vector2.right;
-            playerDir = new Vector3(1,0,0);
+            playerDir = new Vector3(1.5f,0,0);
         }
         if(Input.GetAxisRaw("Horizontal") < 0) // PlayerMove Left
         {
             playerTransform.localScale = new Vector3(-1,1,1);
             moveVelocity = Vector2.left;
-            playerDir = new Vector3(-1,0,0);
+            playerDir = new Vector3(-1.5f,0,0);
         }
         playerTransform.position += moveVelocity * playerSpeed * Time.deltaTime;
     }
