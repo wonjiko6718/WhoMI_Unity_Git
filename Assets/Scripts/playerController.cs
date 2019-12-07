@@ -7,7 +7,6 @@ public class playerController : MonoBehaviour
     private float Hp = 100.0f;
     private float playerSpeed = 7.0f;
     private float jumpSpeed= 7.0f;
-    private bool isGround = false;
 
     public GameObject bulletPrefab;
     public Vector3 playerDir;
@@ -26,6 +25,10 @@ public class playerController : MonoBehaviour
     {
         playerMovement.x = Input.GetAxisRaw("Horizontal");
         Attack();
+        if(Hp <= 0 )
+        {
+            playerDie();
+        }
         
     }
     void FixedUpdate()
@@ -58,7 +61,6 @@ public class playerController : MonoBehaviour
         if((Input.GetButton("Jump")) && playerRigidbody.velocity.y == 0)
         {
             playerRigidbody.AddForce(jumpVelocity,ForceMode2D.Impulse);
-            isGround = false;
         }
     }
     void Attack()
@@ -68,12 +70,16 @@ public class playerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab,transform.position + playerDir, Quaternion.identity);
         }
     }
+    void playerDie()
+    {
+        Destroy(gameObject);
+    }
     // collider Trigger method
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "BossAttack")
         {
             Debug.Log("Hit!");
-            Hp -= 1;
+            Hp -= 5;
             Debug.Log(Hp);
         }
     }

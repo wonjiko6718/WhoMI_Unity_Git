@@ -26,10 +26,14 @@ public class BossController : MonoBehaviour
         Attack();
         OnDamage();
         Move();
+        if(bossHP <= 0 )
+        {
+            BossDie();
+        }
     }
     void Attack()
     {
-        if(canAttack == true)
+        if(canAttack == true && target != null)
         {
             StartCoroutine(bossAttackDelay());
         }
@@ -42,6 +46,11 @@ public class BossController : MonoBehaviour
     {
 
     }
+    void BossDie()
+    {
+        Destroy(gameObject);
+    }
+    
     IEnumerator bossAttackDelay()
     {
         canAttack = false;

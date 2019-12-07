@@ -14,7 +14,14 @@ public class BossBullet : MonoBehaviour
         BBrigidbody = GetComponent<Rigidbody2D>();
 
         target = GameObject.Find("Player");
-        BBrigidbody.velocity = ((target.transform.position - transform.position).normalized * BossAttackSpeed);
+        if(target != null)
+        {
+            BBrigidbody.velocity = ((target.transform.position - transform.position).normalized * BossAttackSpeed);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         Destroy(gameObject, 3.0f);
     }
 

@@ -14,6 +14,13 @@ public class mainCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Camera.main.transform.position = target.transform.position - Vector3.forward;
+        if(target != null)
+        {
+            Camera.main.transform.position = target.transform.position - Vector3.forward;
+        }
+        else
+        {
+            return;
+        }
     }
 }
