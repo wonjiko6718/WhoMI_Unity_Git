@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    private int Hp;
+    private float Hp = 100.0f;
     private float playerSpeed = 7.0f;
     private float jumpSpeed= 7.0f;
     private bool isGround = false;
@@ -55,7 +55,7 @@ public class playerController : MonoBehaviour
     {
         Vector2 jumpVelocity = new Vector2(0,jumpSpeed);
 
-        if((isGround == true && Input.GetButton("Jump")) && playerRigidbody.velocity.y == 0)
+        if((Input.GetButton("Jump")) && playerRigidbody.velocity.y == 0)
         {
             playerRigidbody.AddForce(jumpVelocity,ForceMode2D.Impulse);
             isGround = false;
@@ -69,22 +69,12 @@ public class playerController : MonoBehaviour
         }
     }
     // collider Trigger method
-    void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground")
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "BossAttack")
         {
-            isGround = true;
-        }
-    }
-    void OnCollisionStay2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground")
-        {
-            return;
-        }
-    }
-    void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground")
-        {
-            isGround = false;
+            Debug.Log("Hit!");
+            Hp -= 1;
+            Debug.Log(Hp);
         }
     }
 }

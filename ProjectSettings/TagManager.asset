@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
+  - PlayerAttack
+  - BossAttack
+  - Plate
   layers:
   - Default
   - TransparentFX
