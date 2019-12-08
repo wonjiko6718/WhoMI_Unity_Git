@@ -6,6 +6,7 @@ public class BossController : MonoBehaviour
 {
     private float bossHP = 100.0f;
     private bool canAttack = true;
+    private bool firstPattern = true;
 
     public GameObject bossAttack;
     public GameObject target;
@@ -44,7 +45,12 @@ public class BossController : MonoBehaviour
     }
     void Move()
     {
-
+        if(bossHP == 50 && firstPattern == true)
+        {
+            transform.position = target.transform.position + new Vector3(0,2,0);
+            firstPattern = false;
+        }
+        
     }
     void BossDie()
     {
