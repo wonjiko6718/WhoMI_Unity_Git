@@ -25,7 +25,6 @@ public class BossController : MonoBehaviour
     {
         target = GameObject.Find("Player");
         Attack();
-        OnDamage();
         Move();
         if(bossHP <= 0 )
         {
@@ -38,10 +37,6 @@ public class BossController : MonoBehaviour
         {
             StartCoroutine(bossAttackDelay());
         }
-    }
-    void OnDamage()
-    {
-        
     }
     void Move()
     {
