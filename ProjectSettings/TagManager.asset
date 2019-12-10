@@ -18,11 +18,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Grounds
+  - Boss
+  - Plate
+  - Player
+  - Attacks
   - 
   - 
   - 
@@ -45,4 +45,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BossObject
+    uniqueID: 1051734067
+    locked: 0
+  - name: PlayerObject
+    uniqueID: 1082494151
+    locked: 0
+  - name: Attacks
+    uniqueID: 2474078561
+    locked: 0
+  - name: Grounds
+    uniqueID: 1935010979
+    locked: 0
+  - name: Player
+    uniqueID: 1660538039
+    locked: 0
+  - name: Plate
+    uniqueID: 1036258991
     locked: 0
