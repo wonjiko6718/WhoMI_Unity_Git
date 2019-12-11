@@ -5,18 +5,17 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     private float bossHP = 100.0f;
+    private float bossSpeed = 50.0f;
     private bool canAttack = true;
     private bool firstPattern = true;
 
     public GameObject bossAttack;
     public GameObject target;
-
-    private Transform bossTransform;
     private Rigidbody2D bossRigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
-        bossTransform = GetComponent<Transform>();
         bossRigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -40,6 +39,12 @@ public class BossController : MonoBehaviour
     }
     void Move()
     {
+        if(bossRigidbody.velocity.y == 0)
+        {
+            int randomMove = Random.Range(-1,2); // -1,0,1 -> move Direction
+            Vector2 BossRandomMove = new Vector2(randomMove,0);
+            bossRigidbody.AddForce(BossRandomMove.normalized * bossSpeed);
+        }
         if(bossHP == 50 && firstPattern == true)
         {
             transform.position = target.transform.position + new Vector3(0,2,0);
