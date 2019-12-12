@@ -42,15 +42,20 @@ public class BossController : MonoBehaviour
         if(bossRigidbody.velocity.y == 0)
         {
             int randomMove = Random.Range(-1,2); // -1,0,1 -> move Direction
+            int randomJump = Random.Range(0,100); // 1% Possibility to Jump
             Vector2 BossRandomMove = new Vector2(randomMove,0);
+            Vector2 BossRandomJump = new Vector2(0 , 10.0f);
             bossRigidbody.AddForce(BossRandomMove.normalized * bossSpeed);
+            if(randomJump == 1 && bossRigidbody.velocity.y == 0)
+            {
+                bossRigidbody.AddForce(BossRandomJump * bossSpeed);
+            }
         }
         if(bossHP == 50 && firstPattern == true)
         {
             transform.position = target.transform.position + new Vector3(0,2,0);
             firstPattern = false;
         }
-        
     }
     void BossDie()
     {
