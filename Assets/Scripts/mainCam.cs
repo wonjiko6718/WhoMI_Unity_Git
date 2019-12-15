@@ -16,7 +16,8 @@ public class mainCam : MonoBehaviour
     {
         if(target != null)
         {
-            Camera.main.transform.position = target.transform.position - Vector3.forward;
+             // Camera.main.transform.position = target.transform.position - Vector3.forward; <-follow target
+             Camera.main.transform.position = new Vector3(0,2,-10); // <- fix the position
         }
         else
         {
