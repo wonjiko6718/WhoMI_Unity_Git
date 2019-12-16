@@ -41,13 +41,13 @@ public class playerController : MonoBehaviour
     void Move()
     {
         Vector3 moveVelocity = Vector2.zero;
-        if(Input.GetAxisRaw("Horizontal") > 0) // Player Move Right
+        if(Input.GetAxisRaw("Horizontal") > 0 && playerHit != true) // Player Move Right
         {
             playerTransform.localScale = new Vector3(1,1,1);
             moveVelocity = Vector2.right;
             playerDir = new Vector3(1.5f,0,0);
         }
-        if(Input.GetAxisRaw("Horizontal") < 0) // PlayerMove Left
+        if(Input.GetAxisRaw("Horizontal") < 0 && playerHit != true) // PlayerMove Left
         {
             playerTransform.localScale = new Vector3(-1,1,1);
             moveVelocity = Vector2.left;
@@ -59,7 +59,7 @@ public class playerController : MonoBehaviour
     {
         Vector2 jumpVelocity = new Vector2(0,jumpSpeed);
 
-        if((Input.GetButton("Jump")) && playerRigidbody.velocity.y == 0)
+        if((Input.GetButton("Jump")) && playerRigidbody.velocity.y == 0 && playerHit != true)
         {
             playerRigidbody.AddForce(jumpVelocity,ForceMode2D.Impulse);
         }
@@ -77,12 +77,20 @@ public class playerController : MonoBehaviour
     }
     // collider Trigger method
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "BossAttack")
+        if(other.gameObject.tag == "BossAttack" && playerHit == false)
         {
             Debug.Log("Hit!");
             Hp -= 5;
             Debug.Log(Hp);
             playerRigidbody.velocity = -new Vector2(playerDir.x,playerDir.y).normalized * 2.0f;
+           StartCoroutine(PlayerHitDelay()); 
         }
+    }
+    //coroutine methods
+    IEnumerator PlayerHitDelay()
+    {
+        playerHit = true;
+        yield return new WaitForSeconds(0.5f);
+        playerHit = false;
     }
 }
