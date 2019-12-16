@@ -7,9 +7,10 @@ public class playerController : MonoBehaviour
     private float Hp = 100.0f;
     private float playerSpeed = 7.0f;
     private float jumpSpeed= 7.0f;
+    private bool playerHit = false;
 
     public GameObject bulletPrefab;
-    public Vector3 playerDir;
+    private Vector3 playerDir;
     private Vector2 playerMovement;
     private Rigidbody2D playerRigidbody;
     private Transform playerTransform;
@@ -81,6 +82,7 @@ public class playerController : MonoBehaviour
             Debug.Log("Hit!");
             Hp -= 5;
             Debug.Log(Hp);
+            playerRigidbody.velocity = -new Vector2(playerDir.x,playerDir.y).normalized * 2.0f;
         }
     }
 }
