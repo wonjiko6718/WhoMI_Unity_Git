@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 1677883715}
   - component: {fileID: 1677883716}
   - component: {fileID: 1677883714}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1568,7 +1568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 307523805526900, guid: 2a45429a6d67421448da898b355d3207,
     type: 3}
-  playerDir: {x: 0, y: 0, z: 0}
 --- !u!1 &1955325060
 GameObject:
   m_ObjectHideFlags: 0

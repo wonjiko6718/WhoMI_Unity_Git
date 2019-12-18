@@ -26,11 +26,11 @@ public class BossBullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
-        else if(other.tag == "Ground")
+    //    if(other.tag == "Player")
+    //    {
+    //        Destroy(gameObject);
+    //    }
+        if(other.tag == "Ground")
         {
             Destroy(gameObject);
         }

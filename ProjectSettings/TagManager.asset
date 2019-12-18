@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 1660538039
+    locked: 0
   - name: BossObject
     uniqueID: 1051734067
     locked: 0
@@ -57,9 +60,6 @@ TagManager:
     locked: 0
   - name: Grounds
     uniqueID: 1935010979
-    locked: 0
-  - name: Player
-    uniqueID: 1660538039
     locked: 0
   - name: Plate
     uniqueID: 1036258991
