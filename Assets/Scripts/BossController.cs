@@ -56,6 +56,10 @@ public class BossController : MonoBehaviour
             transform.position = target.transform.position + new Vector3(0,2,0);
             firstPattern = false;
         }
+        if(bossRigidbody.velocity.y < 0) // velocity to down
+        {
+            bossRigidbody.AddForce(new Vector2(0,-100.0f)); // add force to fast to ground
+        }
     }
     void BossDie()
     {
