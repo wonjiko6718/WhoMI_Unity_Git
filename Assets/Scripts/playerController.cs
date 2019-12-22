@@ -55,7 +55,7 @@ public class playerController : MonoBehaviour
         }
         playerTransform.position += moveVelocity * playerSpeed * Time.deltaTime;
     }
-    void Jump() // Collider Vector + method fix please
+    void Jump()
     {
         Vector2 jumpVelocity = new Vector2(0,jumpSpeed);
 
