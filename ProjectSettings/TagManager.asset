@@ -9,6 +9,8 @@ TagManager:
   - PlayerAttack
   - BossAttack
   - Plate
+  - rumor
+  - fabrication
   layers:
   - Default
   - TransparentFX
