@@ -32,6 +32,10 @@ public class fabrication : MonoBehaviour
         {
             StartCoroutine(SpawnRumorDelay());
         }
+        if(SpawnCount == 3)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,19 +44,12 @@ public class fabrication : MonoBehaviour
             canSpawn = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.tag == "Player")
-        {
-            canSpawn = false;
-        }
-    }
     IEnumerator SpawnRumorDelay()
     {
         canSpawn = false;
         GameObject spawningRumor = Instantiate(fabricationSpawnedRumor,transform.position,Quaternion.identity);
-        yield return new WaitForSeconds(1.5f);
         SpawnCount ++;
+        yield return new WaitForSeconds(1.5f);
         canSpawn = true;
     }
 }
