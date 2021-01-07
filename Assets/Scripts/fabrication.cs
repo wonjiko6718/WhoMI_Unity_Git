@@ -10,7 +10,6 @@ public class fabrication : MonoBehaviour
 
     private int SpawnCount = 0;
     private bool canSpawn = false;
-    private float fabricationHP = 100.0f;
 
     public GameObject fabricationSpawnedRumor;
 
