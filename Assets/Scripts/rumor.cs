@@ -7,6 +7,7 @@ public class rumor : MonoBehaviour
     private Transform rumorTrans;
     private Rigidbody2D rumorRigid2D;
     private BoxCollider2D rumorCol2D;
+    private GameObject rumorTarget;
 
     private float rumorMoveSpeed = 50.0f;
     private bool canJump = true;
@@ -26,6 +27,10 @@ public class rumor : MonoBehaviour
     void Update()
     {
         RumorMove();
+        if(rumorCol2D.isTrigger == true) // attatch to player
+        {
+            rumorTrans.position = rumorTarget.GetComponent<Transform>().position;
+        }
     }
     void RumorMove()
     {
@@ -36,6 +41,15 @@ public class rumor : MonoBehaviour
         if(canMove == true)
         {
             StartCoroutine(RumorMoveDelay());
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player On rumor");
+            rumorCol2D.isTrigger = true;
+            rumorTarget = other.gameObject; // target to player
         }
     }
     IEnumerator RumorJumpDelay()

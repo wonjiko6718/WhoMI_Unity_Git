@@ -8,12 +8,14 @@ public class playerController : MonoBehaviour
     private float playerSpeed = 7.0f;
     private float jumpSpeed= 7.0f;
     private bool playerHit = false;
+    private int playerHitStack = 0;
 
     public GameObject bulletPrefab;
     private Vector3 playerDir;
     private Vector2 playerMovement;
     private Rigidbody2D playerRigidbody;
     private Transform playerTransform;
+    private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,14 +78,20 @@ public class playerController : MonoBehaviour
         Destroy(gameObject);
     }
     // collider Trigger method
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "BossAttack" && playerHit == false)
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.gameObject.tag == "rumor" && playerHit == false)
         {
             Debug.Log("Hit!");
             Hp -= 5;
             Debug.Log(Hp);
             playerRigidbody.velocity = -new Vector2(playerDir.x,playerDir.y).normalized * 2.0f;
-           StartCoroutine(PlayerHitDelay()); 
+            playerHitStack +=1;
+            StartCoroutine(PlayerHitDelay());
+            if(playerHitStack >= 3)
+            {
+                Object.Destroy(other.gameObject);
+                playerHitStack = 0;
+            }
         }
     }
     //coroutine methods
