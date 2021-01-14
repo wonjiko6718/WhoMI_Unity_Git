@@ -21,6 +21,7 @@ public class rumor : MonoBehaviour
         rumorCol2D = GetComponent<BoxCollider2D>();
 
         rumorTrans.localScale = new Vector3(0.4f,0.4f,0.4f);
+        rumorCol2D.isTrigger = true;
     }
 
     // Update is called once per frame
