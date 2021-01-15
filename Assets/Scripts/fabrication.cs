@@ -9,6 +9,7 @@ public class fabrication : MonoBehaviour
     private BoxCollider2D fabricationBoxCollider2D;
 
     private int SpawnCount = 0;
+    private int fabricationDownStack = 0;
     private bool canSpawn = false;
 
     public GameObject fabricationSpawnedRumor;
@@ -27,6 +28,7 @@ public class fabrication : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        fabricationMove();
         if(canSpawn == true && SpawnCount <= 2)
         {
             StartCoroutine(SpawnRumorDelay());
@@ -50,5 +52,22 @@ public class fabrication : MonoBehaviour
         SpawnCount ++;
         yield return new WaitForSeconds(1.5f);
         canSpawn = true;
+    }
+    void fabricationMove()
+    {
+        Debug.Log(fabricationDownStack);
+        if(fabricationDownStack < 4)
+        {
+            fabricationTransform.position += new Vector3(0.0f,-1.0f,0.0f);
+            fabricationDownStack += 1;
+        }
+        if(fabricationDownStack == 3)
+        {
+            for(int i = fabricationDownStack; i == 0; i--)
+            {
+                fabricationTransform.position += new Vector3(0.0f,1.0f,0.0f);
+            }
+            fabricationDownStack = 0;
+        }
     }
 }
