@@ -12,6 +12,7 @@ public class fabrication : MonoBehaviour
     private int SpawnCount = 0;
     private bool canSpawn = false;
 
+    public Sprite[] fabricationSaveSprite;
     public GameObject fabricationSpawnedRumor;
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class fabrication : MonoBehaviour
         fabricationTransform = GetComponent<Transform>();
         fabricationRigid2D = GetComponent<Rigidbody2D>();
         fabricationBoxCollider2D = GetComponent<BoxCollider2D>();
+        fabricationSpriteRenderer = GetComponent<SpriteRenderer>();
 
         fabricationTransform.localScale = new Vector3(2,2,2);
         fabricationBoxCollider2D.size = new Vector2(4.0f,6.0f);
@@ -47,9 +49,11 @@ public class fabrication : MonoBehaviour
     IEnumerator SpawnRumorDelay()
     {
         canSpawn = false;
+        fabricationSpriteRenderer.sprite = fabricationSaveSprite[1];
         GameObject spawningRumor = Instantiate(fabricationSpawnedRumor,transform.position,Quaternion.identity);
         SpawnCount ++;
         yield return new WaitForSeconds(1.5f);
         canSpawn = true;
+        //Assets/Sprites/fabrication_Sprite.png
     }
 }

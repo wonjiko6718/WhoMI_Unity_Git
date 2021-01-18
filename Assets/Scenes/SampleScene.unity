@@ -1367,5 +1367,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6725166942691493966, guid: 9d9cc062594a5aa41be8516e0f659b19,
         type: 3}
+    - target: {fileID: 6552572176717277218, guid: 49dea3be5429826429120adfb84df4bf,
+        type: 3}
+      propertyPath: fabricationSaveSprite.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552572176717277218, guid: 49dea3be5429826429120adfb84df4bf,
+        type: 3}
+      propertyPath: fabricationSaveSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: -6725166942691493966, guid: 9d9cc062594a5aa41be8516e0f659b19,
+        type: 3}
+    - target: {fileID: 6552572176717277218, guid: 49dea3be5429826429120adfb84df4bf,
+        type: 3}
+      propertyPath: fabricationSaveSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: -7140040228234910634, guid: 9d9cc062594a5aa41be8516e0f659b19,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49dea3be5429826429120adfb84df4bf, type: 3}
